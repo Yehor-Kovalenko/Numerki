@@ -1,4 +1,6 @@
 def bisekcja(f, a, b, iteracji=None, epsilon=None):
+    #todo make checking the konce przedzialow najpierw
+
     # jesli f(a)*f(b) jest wieksze od 0 to rzucic wyjatek bo funkcja nie zmienia znaku
     if f(a) * f(b) > 0:
         raise ValueError("Error, f(", a, ") * f(", b, ") >= 0. f(a)*f(b) must be less than zero!\n")

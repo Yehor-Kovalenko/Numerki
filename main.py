@@ -12,10 +12,11 @@ def trygonometryczna(x):
 
 
 def wykladnicza(x):
-    return 3 ** x - 2
+    return 3 ** x - 5
+
 
 def zlozenie(x):
     return wielomian(x) + trygonometryczna(x) + wykladnicza(x)
 
 
-print(bisekcja(wielomian, 1, 5, iteracji=20))
+print(bisekcja(trygonometryczna, 0, 2, iteracji=20))
