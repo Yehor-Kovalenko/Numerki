@@ -1,2 +1,8 @@
 from Algorithms import bisekcja
-print(bisekcja(2, 3, iteracji=4))
+
+
+def sqr(x):
+    return x * x
+
+
+print(bisekcja(sqr, -1, 1, iteracji=40))
