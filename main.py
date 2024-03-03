@@ -21,4 +21,4 @@ def zlozenie(x):
 
 print(bisekcja(trygonometryczna, 0, 2, iteracji=20))
 
-plot_function(wykladnicza, -5, 5, bisekcja(wykladnicza, -5, 5, iteracji=20))
+plot_function(wykladnicza, -5, 5, bisekcja(wykladnicza, -5, 5, iteracji=30))
