@@ -42,17 +42,29 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
     return c
 
 
-def sieczne(a, b, iteracji=None, dokladnosc=None):
-    x = 0
+def sieczne(f, a, b, iteracji=None, dokladnosc=None):
     k = 0
+    xn = b # X n
+    xn1 = 0 # X n+1
+    xn_1 = a # X n-1
     if iteracji is not None:
         while k < iteracji:
-            print("hello")
+            if xn == xn_1:
+                break
+            xn1 = xn - (f(xn) * (xn-xn_1)) / (f(xn) - f(xn_1))
             k += 1
-        return x
+            xn_1 = xn
+            xn = xn1
+        return xn
     else:
-        print("what")
-        return x
+        while (a - b) < dokladnosc:
+            if xn == xn_1:
+                break
+            xn1 = xn - (f(xn) * (xn-xn_1)) / (f(xn) - f(xn_1))
+            k += 1
+            xn_1 = xn
+            xn = xn1
+        return xn
 
 
 def plot_function(f, a, b, x0):

@@ -1,6 +1,6 @@
 import math
 
-from Algorithms import bisekcja, plot_function
+from Algorithms import bisekcja, plot_function, sieczne
 
 
 def wielomian(x):
@@ -20,5 +20,6 @@ def zlozenie(x):
 
 
 print(bisekcja(trygonometryczna, 0, 2, iteracji=20))
+print(sieczne(wykladnicza, 0, 2, iteracji=20))
 
 plot_function(wykladnicza, -5, 5, bisekcja(wykladnicza, -5, 5, iteracji=30))
