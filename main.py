@@ -19,6 +19,13 @@ def zlozenie(x):
     return wielomian(x) + trygonometryczna(x) + wykladnicza(x)
 
 
+def print_plot(f, a, b, iter, eps):
+    print('bisekcja: ' + str(bisekcja(f, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(f, a, b, bisekcja(f, a, b, iteracji=iter, epsilon=eps), title="Bisekcja")
+    print('sieczne: ' + str(sieczne(f, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(f, a, b, sieczne(f, a, b, iteracji=iter, epsilon=eps), title="Metoda siecznych")
+
+
 # menu
 
 print("Wybierz funkcje:\n"
@@ -48,22 +55,10 @@ elif wyb == 2:
     iter = None
 
 if funk == 1:
-    print('bisekcja: ' + str(bisekcja(trygonometryczna, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(trygonometryczna, a, b, bisekcja(trygonometryczna, a, b, iteracji=iter, epsilon=eps))
-    print('sieczne: ' + str(sieczne(trygonometryczna, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(trygonometryczna, a, b, sieczne(trygonometryczna, a, b, iteracji=iter, epsilon=eps))
+    print_plot(trygonometryczna, a, b, iter, eps)
 elif funk == 2:
-    print('bisekcja: ' + str(bisekcja(wielomian, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(wielomian, a, b, bisekcja(wielomian, a, b, iteracji=iter, epsilon=eps))
-    print('sieczne: ' + str(sieczne(wielomian, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(wielomian, a, b, sieczne(wielomian, a, b, iteracji=iter, epsilon=eps))
+    print_plot(wielomian, a, b, iter, eps)
 elif funk == 3:
-    print('bisekcja: ' + str(bisekcja(wykladnicza, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(wykladnicza, a, b, bisekcja(wykladnicza, a, b, iteracji=iter, epsilon=eps))
-    print('sieczne: ' + str(sieczne(wykladnicza, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(wykladnicza, a, b, sieczne(wykladnicza, a, b, iteracji=iter, epsilon=eps))
+    print_plot(wykladnicza, a, b, iter, eps)
 elif funk == 4:
-    print('bisekcja: ' + str(bisekcja(zlozenie, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(zlozenie, a, b, bisekcja(zlozenie, a, b, iteracji=iter, epsilon=eps))
-    print('sieczne: ' + str(sieczne(zlozenie, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(zlozenie, a, b, sieczne(zlozenie, a, b, iteracji=iter, epsilon=eps))
+    print_plot(zlozenie, a, b, iter, eps)
