@@ -25,11 +25,6 @@ plot_function(trygonometryczna, 0, 2, bisekcja(trygonometryczna, 0, 2, iteracji=
 
 # menu
 
-print("Wybierz metode:\n"
-      "1. bisekcja\n"
-      "2. sieczne")
-met = int(input())
-
 print("Wybierz funkcje:\n"
       "1. trygonometryczna\n"
       "2. wielomian\n"
@@ -43,34 +38,36 @@ a = int(input())
 print("b:")
 b = int(input())
 
-print("Wprowdz ilosc iteracji:")
-iter = int(input())
+print("Ograniczamy iloscia iteracji czy epsilonem?:\n"
+      "1. iteracje\n"
+      "2. epsilon")
+wyb = int(input())
+if wyb == 1:
+    print("Wprowadz ilosc iteracji?:")
+    iter = int(input())
+    eps = None
+elif wyb == 2:
+    print("Wprowadz epsilon:")
+    eps = float(input())
+    iter = None
 
 if funk == 1:
-    if met == 1:
-        print(bisekcja(trygonometryczna, a, b, iteracji=iter))
-        plot_function(trygonometryczna, a, b, bisekcja(trygonometryczna, a, b, iteracji=iter))
-    elif met == 2:
-        print(sieczne(trygonometryczna, a, b, iteracji=iter))
-        plot_function(trygonometryczna, a, b, sieczne(trygonometryczna, a, b, iteracji=iter))
+    print('bisekcja: ' + str(bisekcja(trygonometryczna, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(trygonometryczna, a, b, bisekcja(trygonometryczna, a, b, iteracji=iter, epsilon=eps))
+    print('sieczne: ' + str(sieczne(trygonometryczna, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(trygonometryczna, a, b, sieczne(trygonometryczna, a, b, iteracji=iter, epsilon=eps))
 elif funk == 2:
-    if met == 1:
-        print(bisekcja(wielomian, a, b, iteracji=iter))
-        plot_function(wielomian, a, b, bisekcja(wielomian, a, b, iteracji=iter))
-    elif met == 2:
-        print(sieczne(wielomian, a, b, iteracji=iter))
-        plot_function(wielomian, a, b, sieczne(wielomian, a, b, iteracji=iter))
+    print('bisekcja: ' + str(bisekcja(wielomian, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(wielomian, a, b, bisekcja(wielomian, a, b, iteracji=iter, epsilon=eps))
+    print('sieczne: ' + str(sieczne(wielomian, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(wielomian, a, b, sieczne(wielomian, a, b, iteracji=iter, epsilon=eps))
 elif funk == 3:
-    if met == 1:
-        print(bisekcja(wykladnicza, a, b, iteracji=iter))
-        plot_function(wykladnicza, a, b, bisekcja(wykladnicza, a, b, iteracji=iter))
-    elif met == 2:
-        print(sieczne(wykladnicza, a, b, iteracji=iter))
-        plot_function(wykladnicza, a, b, sieczne(wykladnicza, a, b, iteracji=iter))
+    print('bisekcja: ' + str(bisekcja(wykladnicza, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(wykladnicza, a, b, bisekcja(wykladnicza, a, b, iteracji=iter, epsilon=eps))
+    print('sieczne: ' + str(sieczne(wykladnicza, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(wykladnicza, a, b, sieczne(wykladnicza, a, b, iteracji=iter, epsilon=eps))
 elif funk == 4:
-    if met == 1:
-        print(bisekcja(zlozenie, a, b, iteracji=iter))
-        plot_function(zlozenie, a, b, bisekcja(zlozenie, a, b, iteracji=iter))
-    elif met == 2:
-        print(sieczne(zlozenie, a, b, iteracji=iter))
-        plot_function(zlozenie, a, b, sieczne(zlozenie, a, b, iteracji=iter))
+    print('bisekcja: ' + str(bisekcja(zlozenie, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(zlozenie, a, b, bisekcja(zlozenie, a, b, iteracji=iter, epsilon=eps))
+    print('sieczne: ' + str(sieczne(zlozenie, a, b, iteracji=iter, epsilon=eps)))
+    plot_function(zlozenie, a, b, sieczne(zlozenie, a, b, iteracji=iter, epsilon=eps))
