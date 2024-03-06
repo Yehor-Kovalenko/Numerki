@@ -19,10 +19,6 @@ def zlozenie(x):
     return wielomian(x) + trygonometryczna(x) + wykladnicza(x)
 
 
-print(bisekcja(trygonometryczna, 0, 2, iteracji=20))
-plot_function(trygonometryczna, 0, 2, bisekcja(trygonometryczna, 0, 2, iteracji=20))
-
-
 # menu
 
 print("Wybierz funkcje:\n"
