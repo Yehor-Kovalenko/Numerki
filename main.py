@@ -22,10 +22,10 @@ def zlozenie(x):
 # menu
 
 print("Wybierz funkcje:\n"
-      "1. trygonometryczna\n"
-      "2. wielomian\n"
-      "3. wykladnicza\n"
-      "4. zlozenie")
+      "1. trygonometryczna - cos(x + PI/4) \n"
+      "2. wielomian - x^2 - 3x + 2\n"
+      "3. wykladnicza - 3^x - 5\n"
+      "4. zlozenie cos(x + PI/4) + x^2 - 3x + 3^x - 3")
 funk = int(input())
 
 print("Wybierz przedzial:")

@@ -42,7 +42,7 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
     return c
 
 
-def sieczne(f, a, b, iteracji=None, dokladnosc=None):
+def sieczne(f, a, b, iteracji=None, epsilon=None):
     k = 0
     xn = b # X n
     xn1 = 0 # X n+1
@@ -57,7 +57,7 @@ def sieczne(f, a, b, iteracji=None, dokladnosc=None):
             xn = xn1
         return xn
     else:
-        while (a - b) < dokladnosc:
+        while (a - b) < epsilon:
             if xn == xn_1:
                 break
             xn1 = xn - (f(xn) * (xn-xn_1)) / (f(xn) - f(xn_1))
