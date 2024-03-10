@@ -31,7 +31,7 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
     # jesli dokladnosc zostala podana jako warunek stopu
     else:
         # poki dokladnosc nie zostala osiagnieta
-        while (a - b) < epsilon:
+        while abs(a - b) >= epsilon:
             c = (a + b) / 2
             if f(c) == 0:
                 return c
@@ -57,7 +57,7 @@ def sieczne(f, a, b, iteracji=None, epsilon=None):
             xn = xn1
         return xn
     else:
-        while (a - b) < epsilon:
+        while abs(xn - xn_1) >= epsilon:
             if xn == xn_1:
                 break
             xn1 = xn - (f(xn) * (xn-xn_1)) / (f(xn) - f(xn_1))
