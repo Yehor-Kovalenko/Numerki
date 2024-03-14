@@ -2,9 +2,16 @@ import math
 
 from Algorithms import bisekcja, plot_function, sieczne
 
+#coefficients for the horner scheme starting from the highest power of the x
+coef = [1, -3, 2]
+#x^2 -3x + 2
+
 
 def wielomian(x):
-    return x * x - 3 * x + 2
+    res = 0
+    for i in coef:
+        res = res * x + i
+    return res
 
 
 def trygonometryczna(x):
@@ -20,10 +27,13 @@ def zlozenie(x):
 
 
 def print_plot(f, a, b, iter, eps):
-    print('bisekcja: ' + str(bisekcja(f, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(f, a, b, bisekcja(f, a, b, iteracji=iter, epsilon=eps), title="Bisekcja")
-    print('sieczne: ' + str(sieczne(f, a, b, iteracji=iter, epsilon=eps)))
-    plot_function(f, a, b, sieczne(f, a, b, iteracji=iter, epsilon=eps), title="Metoda siecznych")
+    bisekcja_ans = bisekcja(f, a, b, iteracji=iter, epsilon=eps)
+    print('bisekcja: ' + str(bisekcja_ans))
+    plot_function(f, a, b, bisekcja_ans, title="Bisekcja")
+
+    sieczne_ans = sieczne(f, a, b, iteracji=iter, epsilon=eps)
+    print('sieczne: ' + str(sieczne_ans))
+    plot_function(f, a, b, sieczne_ans, title="Metoda siecznych")
 
 
 # menu
@@ -37,9 +47,9 @@ funk = int(input())
 
 print("Wybierz przedzial:")
 print("a:")
-a = int(input())
+a = float(input())
 print("b:")
-b = int(input())
+b = (float(input()))
 
 print("Ograniczamy iloscia iteracji czy epsilonem?:\n"
       "1. iteracje\n"
