@@ -23,8 +23,7 @@ def wykladnicza(x):
 
 
 def zlozenie(x):
-    return wielomian(x) + trygonometryczna(x) + wykladnicza(x)
-
+    return trygonometryczna(wielomian(wykladnicza(x)))
 
 def print_plot(f, a, b, iter, eps):
     bisekcja_ans = bisekcja(f, a, b, iteracji=iter, epsilon=eps)
@@ -42,7 +41,7 @@ print("Wybierz funkcje:\n"
       "1. trygonometryczna - cos(x + PI/4) \n"
       "2. wielomian - x^2 - 3x + 2\n"
       "3. wykladnicza - 3^x - 5\n"
-      "4. zlozenie cos(x + PI/4) + x^2 - 3x + 3^x - 3")
+      "4. zlozenie cos(x + PI/4)○(x^2 - 3x+2)○(3^x - 5)")
 funk = int(input())
 
 print("Wybierz przedzial:")
