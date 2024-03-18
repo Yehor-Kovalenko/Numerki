@@ -1,6 +1,6 @@
 import math
 
-from Algorithms import bisekcja, sieczne
+from Algorithms import bisekcja, plot_function, sieczne
 
 #coefficients for the horner scheme starting from the highest power of the x
 coef = [1, -3, 2]
@@ -26,11 +26,11 @@ def zlozenie(x):
     return trygonometryczna(wielomian(wykladnicza(x)))
 
 def print_plot(f, a, b, iter, eps):
-    bisekcja_ans = bisekcja(f, a, b, iteracji=iter, epsilon=eps)
+    bisekcja_ans, iteracji = bisekcja(f, a, b, iteracji=iter, epsilon=eps)
     print('bisekcja: ' + str(bisekcja_ans))
     plot_function(f, a, b, bisekcja_ans, title="Bisekcja")
 
-    sieczne_ans = sieczne(f, a, b, iteracji=iter, epsilon=eps)
+    sieczne_ans, iteracji = sieczne(f, a, b, iteracji=iter, epsilon=eps)
     print('sieczne: ' + str(sieczne_ans))
     plot_function(f, a, b, sieczne_ans, title="Metoda siecznych")
 
@@ -64,8 +64,6 @@ elif wyb == 2:
     iter = None
 
 if funk == 1:
-    if f(a) * f(b) > 0:
-        raise ValueError("Error, f(", a, ") * f(", b, ") >= 0. f(a)*f(b) must be less than zero!\n")
     print_plot(trygonometryczna, a, b, iter, eps)
 elif funk == 2:
     print_plot(wielomian, a, b, iter, eps)

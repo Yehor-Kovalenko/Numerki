@@ -10,6 +10,8 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
         return b
 
     # jesli f(a)*f(b) > 0 to rzucic wyjatek bo funkcja nie zmienia znaku
+    if f(a) * f(b) > 0:
+        return
 
     c = 0
     number_of_iterations = 0
@@ -20,8 +22,7 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
             c = (a + b) / 2
             number_of_iterations += 1
             if f(c) == 0:
-                print("Number of completed iterations: " + str(number_of_iterations))
-                return c
+                return c, number_of_iterations
             elif f(a) * f(c) < 0:
                 b = c
             elif f(c) * f(b) < 0:
@@ -35,14 +36,12 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
             c = (a + b) / 2
             number_of_iterations += 1
             if f(c) == 0:
-                print("Number of completed iterations: " + str(number_of_iterations))
-                return c
+                return c, number_of_iterations
             elif f(a) * f(c) < 0:
                 b = c
             elif f(c) * f(b) < 0:
                 a = c
-    print("Number of completed iterations: " + str(number_of_iterations))
-    return c
+    return c, number_of_iterations
 
 
 def sieczne(f, a, b, iteracji=None, epsilon=None):
@@ -60,8 +59,7 @@ def sieczne(f, a, b, iteracji=None, epsilon=None):
             k += 1
             xn_1 = xn
             xn = xn1
-        print("Number of completed iterations: " + str(number_of_iterations))
-        return xn
+        return xn, number_of_iterations
     else:
         while abs(xn - xn_1) >= epsilon:
             if xn == xn_1:
@@ -71,5 +69,15 @@ def sieczne(f, a, b, iteracji=None, epsilon=None):
             k += 1
             xn_1 = xn
             xn = xn1
-        print("Number of completed iterations: " + str(number_of_iterations))
-        return xn
+        return xn, number_of_iterations
+
+def plot_function(f, a, b, x0, title):
+    x = np.linspace(a, b, 50)
+    plt.axvline(x=0, color="black", linewidth=0.5)
+    plt.axhline(y=0, color="black", linewidth=0.5)
+    fv = np.vectorize(f)
+    plt.plot(x, fv(x), label= 'Funkcja')
+    plt.plot(x0, f(x0), '+', markersize=12, color="red", label='Miejsce zerowe')
+    plt.title(title)
+    plt.legend()
+    plt.show()
