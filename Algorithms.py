@@ -10,8 +10,6 @@ def bisekcja(f, a, b, iteracji=None, epsilon=None):
         return b
 
     # jesli f(a)*f(b) > 0 to rzucic wyjatek bo funkcja nie zmienia znaku
-    if f(a) * f(b) > 0:
-        raise ValueError("Error, f(", a, ") * f(", b, ") >= 0. f(a)*f(b) must be less than zero!\n")
 
     c = 0
     number_of_iterations = 0
@@ -75,15 +73,3 @@ def sieczne(f, a, b, iteracji=None, epsilon=None):
             xn = xn1
         print("Number of completed iterations: " + str(number_of_iterations))
         return xn
-
-
-def plot_function(f, a, b, x0, title):
-    x = np.linspace(a, b, 50)
-    plt.axvline(x=0, color="black", linewidth=0.5)
-    plt.axhline(y=0, color="black", linewidth=0.5)
-    fv = np.vectorize(f)
-    plt.plot(x, fv(x), label= 'Funkcja')
-    plt.plot(x0, f(x0), '+', markersize=12, color="red", label='Miejsce zerowe')
-    plt.title(title)
-    plt.legend()
-    plt.show()
