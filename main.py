@@ -28,10 +28,12 @@ def zlozenie(x):
 def print_plot(f, a, b, iter, eps):
     bisekcja_ans, iteracji = bisekcja(f, a, b, iteracji=iter, epsilon=eps)
     print('bisekcja: ' + str(bisekcja_ans))
+    print("Number of completed iterations: " + str(iteracji))
     plot_function(f, a, b, bisekcja_ans, title="Bisekcja")
 
     sieczne_ans, iteracji = sieczne(f, a, b, iteracji=iter, epsilon=eps)
     print('sieczne: ' + str(sieczne_ans))
+    print("Number of completed iterations: " + str(iteracji))
     plot_function(f, a, b, sieczne_ans, title="Metoda siecznych")
 
 
