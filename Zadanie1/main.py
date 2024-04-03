@@ -1,6 +1,6 @@
 import math
 
-from Algorithms import bisekcja, plot_function, sieczne
+from Zadanie1.Algorithms import bisekcja, plot_function, sieczne
 
 #coefficients for the horner scheme starting from the highest power of the x
 coef = [1, -3, 2]
@@ -15,7 +15,7 @@ def wielomian(x):
 
 
 def trygonometryczna(x):
-    return math.cos(x)
+    return math.cos(x + math.pi/4)
 
 
 def wykladnicza(x):
