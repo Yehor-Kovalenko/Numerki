@@ -47,9 +47,9 @@ else:
                         A[i].append(data[i][j])
                 b.append(data[i][size])
 
-        res = solve(A, b, 20)
+        res = solve(A, b, iter, eps)
         if res == [0]:
                 print("Macierz nie spelnia warunkow zbieznosci")
         else:
                 for i in range(len(res)):
-                        print(str(res[i]))
+                        print("x" + str(i + 1) + " = " + str(res[i]))
