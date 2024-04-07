@@ -2,7 +2,31 @@ import csv
 import numpy as np
 from Algorithms import solve
 
-data = open("data/data38.csv")
+print("Ograniczamy iloscia iteracji czy epsilonem?\n"
+      "1. iteracje\n"
+      "2. epsilon")
+wyb = int(input())
+if wyb == 1:
+    print("Wprowadz ilosc iteracji:")
+    iter = int(input())
+    eps = None
+elif wyb == 2:
+    print("Wprowadz epsilon:")
+    eps = float(input())
+    iter = None
+print("Wybierz rozmiar macierzy:\n"
+      "1. 3x3\n"
+      "2. 4x4")
+wyb = int(input())
+if wyb == 1:
+    print("Wprowadz numer macierzy(od 1 do 8):")
+    nr = 30+ int(input())
+elif wyb == 2:
+    print("Wprowadz numer macierzy(od 1 do 4):")
+    nr = 40 + int(input())
+
+
+data = open("data/data" + str(nr) + ".csv")
 csv.reader(data)
 rows = []
 for row in csv.reader(data):
