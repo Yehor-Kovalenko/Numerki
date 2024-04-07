@@ -3,7 +3,6 @@ import numpy as np
 def solve(A, b, n=None, epsilon=None):
     if niezbieznosc(A) | redukowalnosc(A):
         return [0]
-    # M = findM(findN(A), findL(A), findU(A))
     M = findM(A, findN(A))
     coef = findCoef(findN(findD(A)), b)
     res0 = zero(b, 1)
@@ -80,22 +79,6 @@ def zero(matrix, d):
             zero.append(0)
     return zero
 
-def findL(matrix):
-    res = zero(matrix, 2)
-    for i in range(len(matrix)):
-        for j in range(len(matrix)):
-            if j < i:
-                res[i][j] = matrix[i][j]
-    return res
-
-def findU(matrix):
-    res = zero(matrix, 2)
-    for i in range(len(matrix)):
-        for j in range(len(matrix)):
-            if j > i:
-                res[i][j] = matrix[i][j]
-    return res
-
 def findD(matrix):
     res = zero(matrix, 2)
     for i in range(len(matrix)):
@@ -113,17 +96,10 @@ def findN(matrix):
             res.append(1 / matrix[i][i])
     return res
 
-# def findM(N, L, U):
 def findM(A, N):
     M = zero(A, 2)
     for i in range(len(A)):
         for j in range(len(A)):
-            # L[i][j] += U[i][j]
-            # L[i][j] = L[i][j] * N[i] * (-1)
-            # if L[i][j] == -0.0:
-            #     L[i][j] = 0
-            # if i == j:
-            #     L[i][j] = 0
             if i == j:
                 M[i][j] = 0
             else:
