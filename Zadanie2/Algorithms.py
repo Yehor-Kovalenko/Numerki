@@ -1,6 +1,6 @@
 import numpy as np
 
-def solve(A, b, n):
+def solve(A, b, n=None, epsilon=None):
     if niezbieznosc(A) | redukowalnosc(A):
         return [0]
     # M = findM(findN(A), findL(A), findU(A))
@@ -8,15 +8,31 @@ def solve(A, b, n):
     coef = findCoef(findN(findD(A)), b)
     res0 = zero(b, 1)
     res = zero(b, 1)
-    for _ in range(n):
-        for i in range(len(coef)):
-            res[i] += coef[i]
-            for j in range(len(M)):
-                res[i] += M[i][j] * res0[j]
-        for i in range(len(res)):
-            res0[i] = res[i]
-        res = zero(b, 1)
-    return res0
+    if n is not None:
+        for _ in range(n):
+            for i in range(len(coef)):
+                res[i] += coef[i]
+                for j in range(len(M)):
+                    res[i] += M[i][j] * res0[j]
+            for i in range(len(res)):
+                res0[i] = res[i]
+            res = zero(b, 1)
+        return res0
+    else:
+        while True:
+            for i in range(len(coef)):
+                res[i] += coef[i]
+                for j in range(len(M)):
+                    res[i] += M[i][j] * res0[j]
+            tmp = 0
+            for i in range(len(res)):
+                if abs(res0[i] - res[i]) < epsilon:
+                    tmp += 1
+            if tmp == len(res):
+                return res
+            for i in range(len(res)):
+                res0[i] = res[i]
+            res = zero(b, 1)
 
 def niezbieznosc(A):
     res = 0
