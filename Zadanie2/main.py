@@ -2,7 +2,7 @@ import csv
 import numpy as np
 from Algorithms import solve
 
-data = open("data/data43.csv")
+data = open("data/data38.csv")
 csv.reader(data)
 rows = []
 for row in csv.reader(data):
