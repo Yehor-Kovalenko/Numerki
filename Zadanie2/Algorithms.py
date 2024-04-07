@@ -38,8 +38,9 @@ def niezbieznosc(A):
     for i in range(len(A)):
         sum = 0
         for j in range(len(A)):
-            sum += A[j][i]
-        if abs(sum - A[i][i]) >= abs(A[i][i]):
+            if i != j:
+                sum += A[j][i]
+        if abs(sum) >= abs(A[i][i]):
             res += 1
     if res == 0:
         return False
