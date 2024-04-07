@@ -1,7 +1,7 @@
 import numpy as np
 
 def solve(A, b, n=None, epsilon=None):
-    if niezbieznosc(A) | redukowalnosc(A):
+    if niezbieznosc(A) | redukowalnosc(A): # |
         return [0]
     M = findM(A, findN(A))
     coef = findCoef(findN(findD(A)), b)
@@ -38,8 +38,8 @@ def niezbieznosc(A):
     for i in range(len(A)):
         sum = 0
         for j in range(len(A)):
-            sum += A[i][j]
-        if sum - A[i][i] >= A[i][i]:
+            sum += A[j][i]
+        if abs(sum - A[i][i]) >= abs(A[i][i]):
             res += 1
     if res == 0:
         return False

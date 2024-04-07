@@ -2,7 +2,7 @@ import csv
 import numpy as np
 from Algorithms import solve
 
-data = open("data/data38.csv")
+data = open("data/data44.csv")
 csv.reader(data)
 rows = []
 for row in csv.reader(data):
@@ -23,7 +23,7 @@ else:
                         A[i].append(data[i][j])
                 b.append(data[i][size])
 
-        res = solve(A, b, None, 0.1)
+        res = solve(A, b, 20)
         if res == [0]:
                 print("Macierz nie spelnia warunkow zbieznosci")
         else:
