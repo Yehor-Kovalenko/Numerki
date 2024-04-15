@@ -1,8 +1,14 @@
-import numpy as np
+import copy
 
-def solve(A, b, n=None, epsilon=None):
-    if niezbieznosc(A) | redukowalnosc(A):
-        return [0]
+import numpy as np
+from itertools import *
+
+def solve(data, n=None, epsilon=None):
+    perm = zbieznosc(data)
+    if perm.any() == None:
+        return None
+    A = getA(perm)
+    b = getB(perm)
     M = findM(A, findN(A))
     coef = findCoef(findN(findD(A)), b)
     res0 = zero(b, 1)
@@ -27,6 +33,24 @@ def solve(A, b, n=None, epsilon=None):
                 res0[i] = res[i]
             res = zero(b, 1)
 
+def zbieznosc(data):
+    A = getA(data)
+    if dominacja(A):
+        change(data, A)
+    if dominacja(A) | redukowalnosc(A):
+        return None
+    return data
+
+def swap(arr, x, y):
+    t = [copy.deepcopy(arr[x]), copy.deepcopy(arr[y])]
+    arr[x] = t[1]
+    arr[y] = t[0]
+
+def change(data, A):
+    for i in range(len(data)):
+        swap(data, i, A[i].index(max(A[i])))
+        swap(A, i, A[i].index(max(A[i])))
+
 def oblicz(res0, res, M, coef):
     for i in range(len(coef)):
         res[i] += coef[i]
@@ -34,7 +58,23 @@ def oblicz(res0, res, M, coef):
             res[i] += M[i][j] * res0[j]
     return res
 
-def niezbieznosc(A):
+def getA(data):
+    A = []
+    size = len(data)
+    for i in range(size):
+        A.append([])
+        for j in range(size):
+            A[i].append(data[i][j])
+    return A
+
+def getB(data):
+    b = []
+    size = len(data)
+    for i in range(size):
+        b.append(data[i][size])
+    return b
+
+def dominacja(A):
     res = 0
     for i in range(len(A)):
         sum = 0

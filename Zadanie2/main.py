@@ -2,6 +2,7 @@ import csv
 import numpy as np
 from Algorithms import solve
 
+
 print("Ograniczamy iloscia iteracji czy epsilonem?\n"
       "1. iteracje\n"
       "2. epsilon")
@@ -36,19 +37,8 @@ data = np.array(rows, dtype=np.float64)
 if len(data[0]) != len(data) + 1:
         print("Nieprawidlowy rozmiar macierzy!")
 else:
-        A = []
-        b = []
-
-        size = len(data)
-
-        for i in range(size):
-                A.append([])
-                for j in range(size):
-                        A[i].append(data[i][j])
-                b.append(data[i][size])
-
-        res = solve(A, b, iter, eps)
-        if res == [0]:
+        res = solve(data, iter, eps)
+        if res == None:
                 print("Macierz nie spelnia warunkow zbieznosci")
         else:
                 for i in range(len(res)):
