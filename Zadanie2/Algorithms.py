@@ -1,7 +1,6 @@
 import copy
 
 import numpy as np
-from itertools import *
 
 def solve(data, n=None, epsilon=None):
     perm = zbieznosc(data)
@@ -56,7 +55,6 @@ def oblicz(res0, res, M, coef):
         res[i] += coef[i]
         for j in range(len(M)):
             res[i] += M[i][j] * res0[j]
-    return res
 
 def getA(data):
     A = []
